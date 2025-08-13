@@ -16,6 +16,7 @@
     --fade-duration: 2s;
     --nebula-move-duration: 60s;
     --nebula-hue-duration: 20s;
+    --gap: 0.6em; /* default desktop gap */
   }
 
   * {
@@ -111,13 +112,27 @@
   /* Position 'PROG' to the left of 'is' */
   .tagline .before {
     position: absolute;
-    right: calc(50% + 1.5em); /* adjust gap from 'is' */
+    right: calc(50% + var(--gap));
   }
 
   /* Position 'Dead...' to the right of 'is' */
   .tagline .after {
     position: absolute;
-    left: calc(50% + 1.5em); /* adjust gap from 'is' */
+    left: calc(50% + var(--gap));
+  }
+
+  /* Tablet: slightly smaller gap */
+  @media (max-width: 900px) {
+    :root {
+      --gap: 0.5em;
+    }
+  }
+
+  /* Mobile: even smaller gap */
+  @media (max-width: 600px) {
+    :root {
+      --gap: 0.4em;
+    }
   }
 
   @keyframes nebulaMove {
