@@ -16,9 +16,7 @@
     --fade-duration: 2s;
     --nebula-move-duration: 60s;
     --nebula-hue-duration: 20s;
-
-    /* Fluid gap: min 0.4em, ideal ~1vw, max 0.5em */
-    --gap: clamp(0.4em, 1vw, 0.5em);
+    --gap: clamp(0.4em, 1vw, 0.5em); /* fluid gap */
   }
 
   * {
@@ -31,20 +29,20 @@
     background: black url("starfield.JPG") repeat center center / cover;
     color: white;
     font-family: Arial, sans-serif;
-    height: 100vh;
+    min-height: 100vh; /* allow scrolling if content is taller */
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    padding: 2rem 1rem; /* breathing room */
   }
 
   /* Nebula overlay */
   body::before {
     content: "";
-    position: absolute;
+    position: fixed; /* fixed so it stays while scrolling */
     top: 0;
     left: 0;
     width: 200%;
@@ -83,8 +81,9 @@
     z-index: 10;
   }
 
+  /* Responsive logo */
   .logo {
-    max-width: 80%;
+    width: min(80%, 500px); /* scales with screen, max 500px */
     height: auto;
     animation: fadeIn var(--fade-duration) ease forwards;
   }
@@ -94,14 +93,14 @@
     position: relative;
     width: 100%;
     font-family: "Metal Mania", cursive;
-    font-size: 3rem;
+    font-size: clamp(1.5rem, 4vw, 3rem); /* responsive font size */
     font-weight: 400;
-    margin-top: 15px;
-    color: #c0c0c0; /* silver/steel */
+    margin-top: 20px;
+    color: #c0c0c0;
     text-shadow: 2px 2px 4px #000, 0 0 10px #666;
     animation: fadeIn var(--fade-duration) ease forwards;
     letter-spacing: 1px;
-    height: 1em; /* keeps layout stable */
+    height: 1em;
   }
 
   /* Center 'is' exactly */
@@ -153,12 +152,6 @@
     }
   }
 
-  @media (max-width: 600px) {
-    .tagline {
-      font-size: 2rem;
-    }
-  }
-
   @media (prefers-reduced-motion: reduce) {
     * {
       animation: none !important;
@@ -174,6 +167,11 @@
     <span class="is">is</span>
     <span class="after">Dead...</span>
   </div>
+
+  <p style="margin-top: 3rem; max-width: 600px; z-index: 10; position: relative;">
+    This is placeholder text to demonstrate scrolling. Add your content here.
+    The nebula background will stay fixed while you scroll.
+  </p>
 
   <script>
     // Parallax effect
