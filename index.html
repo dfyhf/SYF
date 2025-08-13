@@ -13,7 +13,8 @@
 
 <style>
   :root {
-    --fade-duration: 2s;
+    --fade-duration-logo: 2s;
+    --fade-duration-tagline: 3s; /* tagline fades slower */
     --nebula-move-duration: 60s;
     --nebula-hue-duration: 20s;
     --tagline-shift: 0.5em; /* same shift for all devices */
@@ -38,7 +39,7 @@
     overflow: hidden;
   }
 
-  /* Nebula overlay - adjusted for consistent look */
+  /* Nebula overlay - consistent look */
   body::before {
     content: "";
     position: fixed;
@@ -87,7 +88,7 @@
   .logo {
     width: min(80%, 500px);
     height: auto;
-    animation: fadeIn var(--fade-duration) ease forwards;
+    animation: fadeIn var(--fade-duration-logo) ease forwards;
   }
 
   /* Smaller logo on mobile */
@@ -105,9 +106,7 @@
     margin-top: 20px;
     color: #c0c0c0;
     text-shadow: 2px 2px 4px #000, 0 0 10px #666;
-    animation: fadeIn var(--fade-duration) ease forwards;
-    animation-delay: 0.5s; /* delay tagline reveal */
-    opacity: 0; /* start hidden until animation */
+    animation: fadeIn var(--fade-duration-tagline) ease forwards;
     letter-spacing: 1px;
     transform: translateX(var(--tagline-shift));
   }
