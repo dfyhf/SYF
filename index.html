@@ -16,7 +16,6 @@
     --fade-duration: 2s;
     --nebula-move-duration: 60s;
     --nebula-hue-duration: 20s;
-    --gap: clamp(0.4em, 1vw, 0.5em); /* fluid gap */
   }
 
   * {
@@ -29,20 +28,20 @@
     background: black url("starfield.JPG") repeat center center / cover;
     color: white;
     font-family: Arial, sans-serif;
-    min-height: 100vh; /* allow scrolling if content is taller */
+    min-height: 100vh; /* allow scrolling if needed */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     position: relative;
     overflow-x: hidden;
-    padding: 2rem 1rem; /* breathing room */
+    padding: 2rem 1rem;
   }
 
   /* Nebula overlay */
   body::before {
     content: "";
-    position: fixed; /* fixed so it stays while scrolling */
+    position: fixed;
     top: 0;
     left: 0;
     width: 200%;
@@ -83,43 +82,21 @@
 
   /* Responsive logo */
   .logo {
-    width: min(80%, 500px); /* scales with screen, max 500px */
+    width: min(80%, 500px);
     height: auto;
     animation: fadeIn var(--fade-duration) ease forwards;
   }
 
   /* Tagline styling */
   .tagline {
-    position: relative;
-    width: 100%;
     font-family: "Metal Mania", cursive;
-    font-size: clamp(1.5rem, 4vw, 3rem); /* responsive font size */
+    font-size: clamp(1.5rem, 4vw, 3rem);
     font-weight: 400;
     margin-top: 20px;
     color: #c0c0c0;
     text-shadow: 2px 2px 4px #000, 0 0 10px #666;
     animation: fadeIn var(--fade-duration) ease forwards;
     letter-spacing: 1px;
-    height: 1em;
-  }
-
-  /* Center 'is' exactly */
-  .tagline .is {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  /* Position 'PROG' to the left of 'is' */
-  .tagline .before {
-    position: absolute;
-    right: calc(50% + var(--gap));
-  }
-
-  /* Position 'Dead...' to the right of 'is' */
-  .tagline .after {
-    position: absolute;
-    left: calc(50% + var(--gap));
   }
 
   @keyframes nebulaMove {
@@ -162,16 +139,7 @@
 </head>
 <body>
   <img class="logo" src="SYF.PNG" alt="Space Your Face Logo" />
-  <div class="tagline">
-    <span class="before">PROG</span>
-    <span class="is">is</span>
-    <span class="after">Dead...</span>
-  </div>
-
-  <p style="margin-top: 3rem; max-width: 600px; z-index: 10; position: relative;">
-    This is placeholder text to demonstrate scrolling. Add your content here.
-    The nebula background will stay fixed while you scroll.
-  </p>
+  <div class="tagline">Prog is Dead...</div>
 
   <script>
     // Parallax effect
