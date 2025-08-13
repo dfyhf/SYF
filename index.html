@@ -48,7 +48,7 @@
     height: 200%;
     background: radial-gradient(
         circle at 20% 30%,
-        rgba(255, 0, 150, 0.18), /* slightly stronger */
+        rgba(255, 0, 150, 0.18),
         transparent 55%
       ),
       radial-gradient(
@@ -100,12 +100,14 @@
   /* Tagline styling */
   .tagline {
     font-family: "Metal Mania", cursive;
-    font-size: clamp(1.6rem, 4vw, 3rem); /* slightly bigger min size */
+    font-size: clamp(1.6rem, 4vw, 3rem);
     font-weight: 400;
     margin-top: 20px;
     color: #c0c0c0;
     text-shadow: 2px 2px 4px #000, 0 0 10px #666;
     animation: fadeIn var(--fade-duration) ease forwards;
+    animation-delay: 0.5s; /* delay tagline reveal */
+    opacity: 0; /* start hidden until animation */
     letter-spacing: 1px;
     transform: translateX(var(--tagline-shift));
   }
@@ -115,7 +117,7 @@
       transform: translate(0, 0) scale(1);
     }
     50% {
-      transform: translate(-25%, -25%) scale(1.15); /* slightly less zoom for sharper look */
+      transform: translate(-25%, -25%) scale(1.15);
     }
     100% {
       transform: translate(0, 0) scale(1);
