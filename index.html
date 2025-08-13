@@ -28,14 +28,13 @@
     background: black url("starfield.JPG") repeat center center / cover;
     color: white;
     font-family: Arial, sans-serif;
-    min-height: 100vh; /* allow scrolling if needed */
+    height: 100vh; /* fill viewport */
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center; /* center horizontally */
+    align-items: center; /* center vertically */
     text-align: center;
     position: relative;
-    overflow-x: hidden;
-    padding: 2rem 1rem;
+    overflow: hidden;
   }
 
   /* Nebula overlay */
@@ -73,11 +72,13 @@
     pointer-events: none;
   }
 
-  /* Ensure content is above nebula */
-  .logo,
-  .tagline {
+  /* Content wrapper */
+  .content {
     position: relative;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   /* Responsive logo */
@@ -97,6 +98,7 @@
     text-shadow: 2px 2px 4px #000, 0 0 10px #666;
     animation: fadeIn var(--fade-duration) ease forwards;
     letter-spacing: 1px;
+    transform: translateX(0.6em); /* shift tagline ~two spaces to the right */
   }
 
   @keyframes nebulaMove {
@@ -138,8 +140,10 @@
 </style>
 </head>
 <body>
-  <img class="logo" src="SYF.PNG" alt="Space Your Face Logo" />
-  <div class="tagline">  Prog is Dead...</div>
+  <div class="content">
+    <img class="logo" src="SYF.PNG" alt="Space Your Face Logo" />
+    <div class="tagline">Prog is Dead...</div>
+  </div>
 
   <script>
     // Parallax effect
