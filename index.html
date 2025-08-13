@@ -84,16 +84,21 @@
         animation: nebulaMove var(--nebula-move-duration) ease-in-out infinite
             alternate,
           hueShift var(--nebula-hue-duration) linear infinite;
-        z-index: 0;
+        z-index: 0; /* stays behind */
         pointer-events: none;
         will-change: transform, filter;
+      }
+
+      /* Ensure logo and tagline are above nebula */
+      .logo,
+      .tagline {
+        position: relative;
+        z-index: 10;
       }
 
       .logo {
         max-width: 80%;
         height: auto;
-        z-index: 1;
-        position: relative;
         animation: fadeIn var(--fade-duration) ease forwards 1s;
         opacity: 0;
         will-change: transform, opacity;
@@ -109,8 +114,6 @@
         -webkit-text-fill-color: transparent;
         animation: psychedelicFlow var(--psychedelic-flow-duration) ease infinite,
           fadeIn var(--fade-duration) ease forwards 2s;
-        z-index: 1;
-        position: relative;
         opacity: 0;
         will-change: background-position, opacity;
       }
