@@ -35,9 +35,6 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    background-position: 50% 50%; /* lock center */
-    background-repeat: repeat;
-    background-size: cover;
   }
 
   /* Nebula overlay */
@@ -101,7 +98,7 @@
     text-shadow: 2px 2px 4px #000, 0 0 10px #666;
     animation: fadeIn var(--fade-duration) ease forwards;
     letter-spacing: 1px;
-    transform: translateX(0.6em); /* shift tagline ~two spaces to the right */
+    transform: translateX(0.3em); /* half the previous offset */
   }
 
   @keyframes nebulaMove {
@@ -147,22 +144,5 @@
     <img class="logo" src="SYF.PNG" alt="Space Your Face Logo" />
     <div class="tagline">Prog is Dead...</div>
   </div>
-
-  <script>
-    // Inverse parallax effect
-    document.addEventListener("mousemove", (e) => {
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      const offsetX = (e.clientX - centerX) / centerX; // -1 to 1
-      const offsetY = (e.clientY - centerY) / centerY; // -1 to 1
-
-      // Move background opposite to mouse direction
-      const moveFactor = 5; // smaller = subtler movement
-      const bgPosX = 50 - offsetX * moveFactor;
-      const bgPosY = 50 - offsetY * moveFactor;
-
-      document.body.style.backgroundPosition = `${bgPosX}% ${bgPosY}%`;
-    });
-  </script>
 </body>
 </html>
