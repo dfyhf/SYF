@@ -16,6 +16,7 @@
     --fade-duration: 2s;
     --nebula-move-duration: 60s;
     --nebula-hue-duration: 20s;
+    --tagline-shift: 0.5em; /* default desktop shift */
   }
 
   * {
@@ -98,7 +99,21 @@
     text-shadow: 2px 2px 4px #000, 0 0 10px #666;
     animation: fadeIn var(--fade-duration) ease forwards;
     letter-spacing: 1px;
-    transform: translateX(0.3em); /* half the previous offset */
+    transform: translateX(var(--tagline-shift));
+  }
+
+  /* Tablet: slightly smaller shift */
+  @media (max-width: 900px) {
+    :root {
+      --tagline-shift: 0.4em;
+    }
+  }
+
+  /* Mobile: smallest shift */
+  @media (max-width: 600px) {
+    :root {
+      --tagline-shift: 0.3em;
+    }
   }
 
   @keyframes nebulaMove {
