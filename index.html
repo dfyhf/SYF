@@ -88,7 +88,7 @@
   .logo {
     width: min(80%, 500px);
     height: auto;
-    animation: fadeIn var(--fade-duration-logo) ease forwards;
+    animation: fadeInLogo var(--fade-duration-logo) ease forwards;
   }
 
   /* Smaller logo on mobile */
@@ -106,46 +106,37 @@
     margin-top: 20px;
     color: #c0c0c0;
     text-shadow: 2px 2px 4px #000, 0 0 10px #666;
-    animation: fadeIn var(--fade-duration-tagline) ease forwards;
+    animation: fadeInTagline var(--fade-duration-tagline) ease forwards;
     letter-spacing: 1px;
     transform: translateX(var(--tagline-shift));
   }
 
+  /* Logo fade */
+  @keyframes fadeInLogo {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Tagline fade - slower and more gradual */
+  @keyframes fadeInTagline {
+    0% { opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+
   @keyframes nebulaMove {
-    0% {
-      transform: translate(0, 0) scale(1);
-    }
-    50% {
-      transform: translate(-25%, -25%) scale(1.15);
-    }
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-25%, -25%) scale(1.15); }
+    100% { transform: translate(0, 0) scale(1); }
   }
 
   @keyframes hueShift {
-    0% {
-      filter: hue-rotate(0deg);
-    }
-    100% {
-      filter: hue-rotate(360deg);
-    }
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    * {
-      animation: none !important;
-      transition: none !important;
-    }
+    * { animation: none !important; transition: none !important; }
   }
 </style>
 </head>
