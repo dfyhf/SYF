@@ -16,7 +16,9 @@
     --fade-duration: 2s;
     --nebula-move-duration: 60s;
     --nebula-hue-duration: 20s;
-    --gap: 0.6em; /* default desktop gap */
+
+    /* Fluid gap: min 0.4em, ideal ~1vw, max 0.5em */
+    --gap: clamp(0.4em, 1vw, 0.5em);
   }
 
   * {
@@ -119,20 +121,6 @@
   .tagline .after {
     position: absolute;
     left: calc(50% + var(--gap));
-  }
-
-  /* Tablet: slightly smaller gap */
-  @media (max-width: 900px) {
-    :root {
-      --gap: 0.5em;
-    }
-  }
-
-  /* Mobile: even smaller gap */
-  @media (max-width: 600px) {
-    :root {
-      --gap: 0.4em;
-    }
   }
 
   @keyframes nebulaMove {
