@@ -5,25 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Space Your Face</title>
 
-<!-- Edgy, bold font -->
-<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+<!-- Metal font -->
+<link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet" />
 
 <style>
   :root {
-    --psychedelic-gradient: linear-gradient(
-      270deg,
-      #ff0000,
-      #ff7f00,
-      #ffff00,
-      #00ffff,
-      #0000ff,
-      #8f00ff,
-      #ff00ff
-    );
     --fade-duration: 2s;
     --nebula-move-duration: 60s;
     --nebula-hue-duration: 20s;
-    --psychedelic-flow-duration: 12s;
   }
 
   * {
@@ -46,7 +35,7 @@
     overflow: hidden;
   }
 
-  /* Nebula overlay - more subtle */
+  /* Nebula overlay */
   body::before {
     content: "";
     position: absolute;
@@ -77,16 +66,13 @@
   }
 
   .tagline {
-    font-family: "Anton", sans-serif;
-    font-size: 2.8rem;
-    font-weight: 700;
+    font-family: "Metal Mania", cursive;
+    font-size: 3rem;
+    font-weight: 400;
     margin-top: 15px;
-    background: var(--psychedelic-gradient);
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: psychedelicFlow var(--psychedelic-flow-duration) ease infinite,
-               fadeIn var(--fade-duration) ease forwards;
+    color: #c0c0c0; /* silver/steel */
+    text-shadow: 2px 2px 4px #000, 0 0 10px #666;
+    animation: fadeIn var(--fade-duration) ease forwards;
     letter-spacing: 1px;
   }
 
@@ -106,12 +92,6 @@
     to { opacity: 1; }
   }
 
-  @keyframes psychedelicFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
   @media (max-width: 600px) {
     .tagline { font-size: 2rem; }
   }
@@ -123,7 +103,7 @@
 </head>
 <body>
   <img class="logo" src="SYF.PNG" alt="Space Your Face Logo" />
-  <div class="tagline">Prog Is Dead</div>
+  <div class="tagline">Prog Is Dead...</div>
 
   <script>
     // Parallax effect
