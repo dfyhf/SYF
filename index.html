@@ -86,7 +86,10 @@
     animation: fadeIn var(--fade-duration) ease forwards;
   }
 
+  /* Tagline styling */
   .tagline {
+    position: relative;
+    width: 100%;
     font-family: "Metal Mania", cursive;
     font-size: 3rem;
     font-weight: 400;
@@ -95,24 +98,26 @@
     text-shadow: 2px 2px 4px #000, 0 0 10px #666;
     animation: fadeIn var(--fade-duration) ease forwards;
     letter-spacing: 1px;
-
-    /* New centering logic */
-    position: relative;
-    width: 100%; /* full width so 'is' can be centered to screen */
+    height: 1em; /* keeps layout stable */
   }
 
+  /* Center 'is' exactly */
   .tagline .is {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
   }
 
+  /* Position 'PROG' to the left of 'is' */
   .tagline .before {
-    padding-right: 0.25em;
+    position: absolute;
+    right: calc(50% + 1.5em); /* adjust gap from 'is' */
   }
 
+  /* Position 'Dead...' to the right of 'is' */
   .tagline .after {
-    padding-left: 0.25em;
+    position: absolute;
+    left: calc(50% + 1.5em); /* adjust gap from 'is' */
   }
 
   @keyframes nebulaMove {
