@@ -53,6 +53,7 @@
         will-change: background-position;
       }
 
+      /* Nebula overlay with morphing colors */
       body::before {
         content: "";
         position: absolute;
@@ -93,7 +94,6 @@
         height: auto;
         z-index: 1;
         position: relative;
-        cursor: pointer;
         animation: fadeIn var(--fade-duration) ease forwards 1s;
         opacity: 0;
         will-change: transform, opacity;
@@ -166,23 +166,11 @@
           transition: none !important;
         }
       }
-
-      #warpCanvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 999;
-        background: black;
-        display: none;
-      }
     </style>
   </head>
   <body>
-    <img id="logo" class="logo" src="SYF.png.PNG" alt="Space Your Face Logo" />
+    <img class="logo" src="SYF.png.PNG" alt="Space Your Face Logo" />
     <div class="tagline">Prog Is Dead</div>
-    <canvas id="warpCanvas"></canvas>
 
     <script>
       // Parallax effect
@@ -190,64 +178,6 @@
         const x = (e.clientX / window.innerWidth - 0.5) * 10;
         const y = (e.clientY / window.innerHeight - 0.5) * 10;
         document.body.style.backgroundPosition = `${50 - x}% ${50 - y}%`;
-      });
-
-      // Warp-speed star streak animation
-      const canvas = document.getElementById("warpCanvas");
-      const ctx = canvas.getContext("2d");
-      let stars = [];
-      let warpActive = false;
-
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-      window.addEventListener("resize", resizeCanvas);
-      resizeCanvas();
-
-      function createStars(count) {
-        stars = [];
-        for (let i = 0; i < count; i++) {
-          stars.push({
-            x: (Math.random() - 0.5) * canvas.width,
-            y: (Math.random() - 0.5) * canvas.height,
-            z: Math.random() * canvas.width,
-          });
-        }
-      }
-
-      function warpAnimation() {
-        if (!warpActive) return;
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        for (let star of stars) {
-          star.z -= 20;
-          if (star.z <= 0) {
-            star.x = (Math.random() - 0.5) * canvas.width;
-            star.y = (Math.random() - 0.5) * canvas.height;
-            star.z = canvas.width;
-          }
-          const k = 128.0 / star.z;
-          const px = star.x * k + canvas.width / 2;
-          const py = star.y * k + canvas.height / 2;
-          const size = (1 - star.z / canvas.width) * 3;
-          ctx.fillStyle = "white";
-          ctx.beginPath();
-          ctx.arc(px, py, size, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        requestAnimationFrame(warpAnimation);
-      }
-
-      document.getElementById("logo").addEventListener("click", () => {
-        canvas.style.display = "block";
-        warpActive = true;
-        createStars(800);
-        warpAnimation();
-        setTimeout(() => {
-          window.location.href = "home.html";
-        }, 1200);
       });
     </script>
   </body>
