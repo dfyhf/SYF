@@ -16,7 +16,7 @@
     --fade-duration: 2s;
     --nebula-move-duration: 60s;
     --nebula-hue-duration: 20s;
-    --tagline-shift: 0.5em; /* default desktop shift */
+    --tagline-shift: 0.5em; /* same shift for all devices */
   }
 
   * {
@@ -92,7 +92,7 @@
   /* Tagline styling */
   .tagline {
     font-family: "Metal Mania", cursive;
-    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-size: clamp(1.6rem, 4vw, 3rem); /* slightly bigger min size */
     font-weight: 400;
     margin-top: 20px;
     color: #c0c0c0;
@@ -100,20 +100,6 @@
     animation: fadeIn var(--fade-duration) ease forwards;
     letter-spacing: 1px;
     transform: translateX(var(--tagline-shift));
-  }
-
-  /* Tablet: slightly smaller shift */
-  @media (max-width: 900px) {
-    :root {
-      --tagline-shift: 0.4em;
-    }
-  }
-
-  /* Mobile: smallest shift */
-  @media (max-width: 600px) {
-    :root {
-      --tagline-shift: 0.3em;
-    }
   }
 
   @keyframes nebulaMove {
