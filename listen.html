@@ -400,8 +400,7 @@
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
               </button>
               <button type="button" class="ctrl-btn ctrl-main" id="play" aria-label="Play">
-                <svg id="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
-                <svg id="icon-pause" viewBox="0 0 24 24" aria-hidden="true" hidden><path fill="currentColor" d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+                <svg id="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path id="play-icon-path" fill="currentColor" d="M8 5v14l11-7z"/></svg>
               </button>
               <button type="button" class="ctrl-btn" id="next" aria-label="Next track">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 18l8.5-6L6 6v12zm10 0V6h2v12h-2z"/></svg>
@@ -442,8 +441,9 @@
     const prevBtn = document.getElementById("prev");
     const playBtn = document.getElementById("play");
     const nextBtn = document.getElementById("next");
-    const iconPlay = document.getElementById("icon-play");
-    const iconPause = document.getElementById("icon-pause");
+    const playIconPath = document.getElementById("play-icon-path");
+    const PLAY_ICON = "M8 5v14l11-7z";
+    const PAUSE_ICON = "M6 5h4v14H6zm8 0h4v14h-4z";
     const downloadLink = document.getElementById("download-mp3");
     const playlistEl = document.getElementById("playlist");
     const playerMainEl = document.getElementById("player-main");
@@ -468,8 +468,7 @@
 
     function setPlayingUi(playing) {
       isPlaying = playing;
-      iconPlay.hidden = playing;
-      iconPause.hidden = !playing;
+      playIconPath.setAttribute("d", playing ? PAUSE_ICON : PLAY_ICON);
       playBtn.setAttribute("aria-label", playing ? "Pause" : "Play");
     }
 
@@ -495,7 +494,6 @@
       titleEl.textContent = track.title;
       const src = trackSrc(track);
       music.src = src;
-      music.load();
       downloadLink.href = src;
       downloadLink.setAttribute("download", track.title + ".mp3");
       showChrome();
@@ -509,15 +507,16 @@
         return;
       }
       const pending = music.play();
-      setPlayingUi(true);
       if (pending) {
-        pending.catch(() => setPlayingUi(false));
+        pending.catch(() => {
+          if (!music.paused) return;
+          setPlayingUi(false);
+        });
       }
     }
 
     function pauseSong() {
       music.pause();
-      setPlayingUi(false);
     }
 
     function step(delta) {
@@ -605,6 +604,8 @@
     playBtn.addEventListener("click", () => (isPlaying ? pauseSong() : playSong()));
     prevBtn.addEventListener("click", () => step(-1));
     nextBtn.addEventListener("click", () => step(1));
+    music.addEventListener("play", () => setPlayingUi(true));
+    music.addEventListener("pause", () => setPlayingUi(false));
     music.addEventListener("timeupdate", updateProgressBar);
     music.addEventListener("loadedmetadata", () => {
       const track = tracks[songIndex];
