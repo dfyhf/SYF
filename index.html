@@ -102,8 +102,7 @@
     animation: fadeInLogo var(--fade-duration-logo) ease forwards;
   }
 
-  .tagline,
-  .listen {
+  .tagline {
     width: 100%;
     text-align: center;
     font-family: "Inknut Antiqua", serif;
@@ -111,30 +110,9 @@
     color: #c0c0c0;
     text-shadow: 2px 2px 4px #000, 0 0 10px #666;
     animation: fadeInTagline var(--fade-duration-tagline) ease forwards;
-  }
-
-  .tagline {
     margin-top: clamp(14px, 2.4vh, 24px);
     font-size: clamp(1.15rem, 2.7vw, 1.85rem);
     line-height: 1.45;
-  }
-
-  .listen {
-    margin-top: clamp(12px, 2vh, 18px);
-    font-size: clamp(1.05rem, 2.2vw, 1.5rem);
-    line-height: 1.2;
-    text-decoration: none;
-  }
-
-  .listen:hover,
-  .listen:focus-visible {
-    color: #fff;
-    text-shadow: 2px 2px 4px #000, 0 0 16px #c0c0c0;
-  }
-
-  .listen:focus-visible {
-    outline: 1px solid rgba(192, 192, 192, 0.7);
-    outline-offset: 6px;
   }
 
   /* Logo fade */
@@ -170,7 +148,6 @@
   <div class="content">
     <img class="logo" src="SYF.png" alt="Space Your Face Logo" />
     <div class="tagline">(Heavy Jams)<br>from Asheville, NC</div>
-    <a class="listen" href="listen.html">Listen</a>
   </div>
 </body>
 </html>
