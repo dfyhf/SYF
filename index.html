@@ -7,7 +7,7 @@
 
 <!-- Metal font -->
 <link
-  href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@700&display=swap"
   rel="stylesheet"
 />
 
@@ -100,15 +100,38 @@
 
   /* Tagline styling */
   .tagline {
-    font-family: "Metal Mania", cursive;
+    font-family: "Inknut Antiqua", serif;
     font-size: clamp(1.6rem, 4vw, 3rem);
-    font-weight: 400;
+    font-weight: 700;
     margin-top: 20px;
     color: #c0c0c0;
     text-shadow: 2px 2px 4px #000, 0 0 10px #666;
     animation: fadeInTagline var(--fade-duration-tagline) ease forwards;
     letter-spacing: 1px;
     transform: translateX(var(--tagline-shift));
+  }
+
+  .listen {
+    font-family: "Inknut Antiqua", serif;
+    font-weight: 700;
+    font-size: clamp(1.35rem, 3.2vw, 2.2rem);
+    margin-top: 22px;
+    color: #c0c0c0;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px #000, 0 0 10px #666;
+    animation: fadeInTagline var(--fade-duration-tagline) ease forwards;
+  }
+
+  .listen:hover,
+  .listen:focus-visible {
+    color: #fff;
+    text-shadow: 2px 2px 4px #000, 0 0 16px #c0c0c0;
+  }
+
+  .listen:focus-visible {
+    outline: 1px solid rgba(192, 192, 192, 0.7);
+    outline-offset: 6px;
   }
 
   /* Logo fade */
@@ -144,6 +167,7 @@
   <div class="content">
     <img class="logo" src="SYF.png" alt="Space Your Face Logo" />
     <div class="tagline">(Heavy Jams)<br>from Asheville, NC</div>
+    <a class="listen" href="listen.html">Listen</a>
   </div>
 </body>
 </html>
